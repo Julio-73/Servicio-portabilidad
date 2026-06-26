@@ -111,12 +111,14 @@ li {
 
 /* Common Section Spacing */
 .section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
 }
 .bg-darker {
   background-color: var(--color-bg-alt);
   position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* ==========================================================================
@@ -270,6 +272,8 @@ li {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  max-width: 1400px;
+  width: 100%;
 }
 .logo {
   font-weight: 800;
@@ -307,13 +311,14 @@ li {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: 1.75rem;
 }
 .nav-link {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text-sub);
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 .nav-link:hover {
   color: var(--color-text-main);
@@ -1781,8 +1786,8 @@ li {
   }
 }
 
-/* Up to 768px: Mobile hamburger menu & text size scaling */
-@media (max-width: 768px) {
+/* Up to 992px: Mobile hamburger menu & text size scaling */
+@media (max-width: 992px) {
   .logo-divider,
   .logo-subtitle {
     display: none;
@@ -1940,5 +1945,33 @@ li {
   .footer-links {
     flex-direction: column;
     gap: 1rem;
+  }
+}
+
+/* Laptop Viewport Spacing Optimizer (993px to 1200px) */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .navbar-container {
+    max-width: 100%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .nav-links {
+    gap: 1.25rem;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+  }
+  .logo {
+    font-size: 1.05rem;
+  }
+  .logo-subtitle {
+    display: none; /* Hide subtitle to give more space for links */
+  }
+  .logo-divider {
+    display: none;
+  }
+  .nav-desktop-cta {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem;
   }
 }
