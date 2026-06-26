@@ -48,13 +48,17 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   background-color: var(--color-bg);
   color: var(--color-text-main);
   font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll Offset for Sticky Header */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 body {

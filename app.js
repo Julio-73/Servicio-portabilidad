@@ -296,6 +296,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
+  // PREMIUM INERTIAL SMOOTH SCROLL (LENIS)
+  // ==========================================================================
+  function initSmoothScroll() {
+    // Only initialize Lenis if it loaded correctly from CDN
+    if (typeof Lenis === 'undefined') return;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium exponential easing
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1.0,
+      smoothTouch: false, // Maintain native smooth touch scrolling on mobile
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    // Run animation frames
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Bind all anchor clicks to Lenis smooth scrollTo method
+    const navAnchors = document.querySelectorAll('a[href^="#"]');
+    navAnchors.forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (targetId === '#' || targetId === '') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          
+          lenis.scrollTo(targetElement, {
+            offset: -80, // Sticky header height offset
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          });
+        }
+      });
+    });
+
+    // Share lenis globally in case other scripts need it
+    window.lenis = lenis;
+  }
+
+  // ==========================================================================
   // STICKY HEADER SCROLL CLASS
   // ==========================================================================
   function initHeaderScroll() {
@@ -316,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // INITIALIZE ALL
   // ==========================================================================
+  initSmoothScroll();
   initHeaderScroll();
   initMobileMenu();
   initPlanSwitcher();
