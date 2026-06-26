@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           case 'plan-450gb':
           case 'plan-libres':
           case 'plan-libres-plus':
+          case 'plan-fijo':
           case 'plan-adicional':
             message = `Hola Jorge, me interesa contratar el ${plan}. ¿Cuáles son los requisitos para la portabilidad?`;
             break;
