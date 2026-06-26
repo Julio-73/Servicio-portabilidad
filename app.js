@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // CONFIGURATION
   // ==========================================================================
   // Custom phone number format for WhatsApp redirection
-  const WHATSAPP_PHONE = '51935377743'; // Configurable WhatsApp contact number
+  const WHATSAPP_PHONE = '51936563709'; // Configurable WhatsApp contact number
   
   // ==========================================================================
   // WHATSAPP DYNAMIC MESSAGE REDIRECTION SYSTEM (CRO / CRO OPTIMIZATION)
