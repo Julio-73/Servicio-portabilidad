@@ -346,6 +346,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
+  // INTERACTIVE GLOWING CARDS (MOUSE MOVE EFFECT)
+  // ==========================================================================
+  function initInteractiveCards() {
+    const cards = document.querySelectorAll('.plan-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  }
+
+  // ==========================================================================
+  // DYNAMIC BACKGROUND GLOWS (SCROLL PARALLAX)
+  // ==========================================================================
+  function initDynamicScrollGlows() {
+    const orbGreen = document.querySelector('.orb-green-top');
+    const orbPurple = document.querySelector('.orb-purple-mid');
+    const orbCyan = document.querySelector('.orb-cyan-bottom');
+    
+    if (!orbGreen && !orbPurple && !orbCyan) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      
+      const scrollPercent = scrollY / docHeight;
+
+      // Smooth transformations linked to scroll percentage
+      if (orbGreen) {
+        orbGreen.style.transform = `translate(${scrollPercent * 60}px, ${scrollPercent * 100}px) scale(${1 + scrollPercent * 0.15})`;
+      }
+      if (orbPurple) {
+        orbPurple.style.transform = `translate(${-scrollPercent * 80}px, ${-scrollPercent * 50}px) scale(${1 - scrollPercent * 0.08})`;
+      }
+      if (orbCyan) {
+        orbCyan.style.transform = `translate(${scrollPercent * 70}px, ${-scrollPercent * 80}px) scale(${1 + scrollPercent * 0.1})`;
+      }
+    });
+  }
+
+  // ==========================================================================
   // STICKY HEADER SCROLL CLASS
   // ==========================================================================
   function initHeaderScroll() {
@@ -367,6 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // INITIALIZE ALL
   // ==========================================================================
   initSmoothScroll();
+  initInteractiveCards();
+  initDynamicScrollGlows();
   initHeaderScroll();
   initMobileMenu();
   initPlanSwitcher();
