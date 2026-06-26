@@ -670,7 +670,8 @@ li {
   border-radius: 12px;
   margin-bottom: 1.5rem;
 }
-.switcher-btn {
+.switcher-btn,
+.switcher-btn-450 {
   flex: 1;
   background: none;
   border: none;
@@ -684,7 +685,12 @@ li {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.switcher-btn.active {
+.switcher-btn:hover,
+.switcher-btn-450:hover {
+  color: var(--color-text-main);
+}
+.switcher-btn.active,
+.switcher-btn-450.active {
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-text-main);
 }
@@ -1722,6 +1728,14 @@ li {
 
 /* Up to 768px: Mobile hamburger menu & text size scaling */
 @media (max-width: 768px) {
+  .logo-divider,
+  .logo-subtitle {
+    display: none;
+  }
+  .hero-section {
+    padding-top: 120px;
+    min-height: auto;
+  }
   .hero-title {
     font-size: 2.75rem;
   }
@@ -1816,18 +1830,40 @@ li {
 
 /* Up to 576px: True Mobile portrait layout */
 @media (max-width: 576px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
   .hero-title {
     font-size: 2.25rem;
   }
   .hero-subtitle {
     font-size: 1.1rem;
   }
+  .hero-actions .btn {
+    width: 100%;
+  }
   .btn-massive {
     font-size: 1.1rem;
     padding: 1rem 2rem;
   }
-  .plans-grid, .benefits-grid, .devices-grid, .timeline-grid {
+  .plans-grid, .benefits-grid, .devices-grid, .timeline-grid, .club-grid {
     grid-template-columns: 1fr;
+  }
+  .plan-card {
+    padding: 2rem 1.25rem;
+  }
+  .device-details {
+    padding: 1.25rem 1rem;
+  }
+  .ent-card-content {
+    padding: 1.5rem 1rem;
+  }
+  .catalog-legend {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0;
   }
   .badge-online {
     left: 10px;
